@@ -13,7 +13,7 @@ const int enA = 5;
 const int enB = 6;
 
 char val = ' ' ;
-int temp = 0;
+char temp = ' ' ;
 void setup() {
 Serial.begin(9600);
 
@@ -49,23 +49,15 @@ void loop() {
 //  Serial.print((int)r, HEX); Serial.print((int)g, HEX); Serial.print((int)b, HEX);
  Serial.println(); 
 
+  char val = Serial.read();
 
+ while (Serial.available () == 1 ) { 
 
- while (Serial.available () == 1 ) ;
-
-
-for(int i =0; i<=255; i++ ){
-
-
-
-
-
- const   char val = Serial.read();
-
-
+ 
+  temp = val ;
 
              
-   if ( (val == 'a') && (clear<160) && (120<clear)){
+   if ( (temp == 'a') && (clear<160) && (120<clear)){
       Serial.print("Black");
       // sol
      digitalWrite(in1, LOW);
@@ -81,7 +73,7 @@ for(int i =0; i<=255; i++ ){
      }
 
 
-    else if ( (val == 'r' )&& (170<clear)&&(clear<200) ){  
+    else if ( (temp == 'r' )&& (170<clear)&&(clear<200) ){  
       Serial.print("Red");
 
     //motor sol
@@ -152,7 +144,7 @@ for(int i =0; i<=255; i++ ){
 //       
 //    }
     
-     if (( 306<=clear) && (clear<=325) ){
+     if (( 260<=clear) && (clear<=400) ){
        //motor sol
      digitalWrite(in1, LOW);
      digitalWrite(in2,  HIGH);  
@@ -161,14 +153,12 @@ for(int i =0; i<=255; i++ ){
      digitalWrite(in3, HIGH);
      digitalWrite(in4,  LOW);
      analogWrite(enB,  0);
-     char val = Serial.read();
-     
-       
-    }
-    
+
+
+
+   } 
   }
-  
- }  
+}
    
   
     
